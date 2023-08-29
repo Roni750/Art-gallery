@@ -4,6 +4,8 @@ import express from 'express'
 import { logger } from './services/logger.service.js'
 import path from 'path'
 import { config } from 'dotenv'
+import { setupSocketAPI } from './services/socket.service.mjs'
+
 config()
 
 const app = express()
@@ -12,6 +14,7 @@ const server = http.createServer(app)
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'))
+setupSocketAPI(server)
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.resolve('public')))
