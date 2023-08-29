@@ -858,3 +858,6 @@
 29.8.2023, 22:52:48 - INFO - Socket disconnected [id: undefined] 
 29.8.2023, 22:52:48 - INFO - New connected socket [id: LJsYs2RPdjziShTMAABT] 
 29.8.2023, 22:52:53 - DEBUG - Getting Images: 
+29.8.2023, 22:54:35 - INFO - Server is running on port: 3030 
+29.8.2023, 22:54:36 - INFO - New connected socket [id: Pba5fmoiv6HJQnThAAAB] 
+29.8.2023, 22:54:36 - INFO - New connected socket [id: 6R0JLFUhA1rmTuBrAAAD] 
