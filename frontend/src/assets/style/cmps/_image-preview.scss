@@ -1,0 +1,27 @@
+.image-preview {
+    width: 400px;
+    -webkit-box-shadow: 0px 0px 0px 1px #7A7A7A;
+    box-shadow: 0px 0px 0px 1px #7A7A7A;
+
+    .image {
+        width: 400px;
+    }
+
+    .image-card {
+        padding: .5em;
+    }
+
+    .artist {
+        color: gray;
+        font-size: rem(12px);
+    }
+
+    .desc {
+        margin-block: .5em;
+    }
+
+    .title {
+        text-transform: capitalize;
+        font-family: Ubuntu;
+    }
+}
