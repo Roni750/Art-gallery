@@ -5,14 +5,15 @@ import { ImageFilter } from '../components/image-filter.jsx'
 
 export function Index() {
     const [images, setImages] = useState(null)
+    const [filterBy, setFilterBy] = useState("")
 
     useEffect(() => {
         fetchData()
-    }, [])
+    }, [filterBy])
 
     async function fetchData() {
         try {
-            const images = await imageService.query()
+            const images = await imageService.query(filterBy)
             console.log("images:", images)
             setImages(images)
         } catch (err) {
@@ -20,21 +21,9 @@ export function Index() {
         }
     }
 
-    function onSetFilter(filterToEdit) {
-        console.log("filterToEdit:", filterToEdit)
-        setFilter(filterToEdit)
-    }
-
-    function setFilter(filterToEdit) {
-        if (!images) return
-        const filteredImages = images.filter(image => image.name || image.artist !== filterToEdit)
-        console.log("filteredImages:", filteredImages)
-        setImages(filteredImages)
-    }
-
     return (
         <div className="image-index">
-            <ImageFilter onSetFilter={onSetFilter} />
+            <ImageFilter setFilterBy={setFilterBy} filterBy={filterBy} />
             {images ? (
                 <ImageList images={images} />
             ) : <h4>Loading...</h4>

@@ -7,11 +7,15 @@ export const imageService = {
     getById,
     save,
     remove,
-    getDefaultFilter,
 }
 
-function query() {
-    return httpService.get(BASE_URL)
+async function query(filterBy) {
+    let images = await httpService.get(BASE_URL)
+    if (filterBy) {
+        const regExp = new RegExp(filterBy, 'i')
+        images = images.filter(image => regExp.test(image.name) || regExp.test(image.artist))
+    }
+    return images
 }
 
 function getById(imageId) {
@@ -30,8 +34,4 @@ function save(image) {
     } else {
         return httpService.post(BASE_URL, image)
     }
-}
-
-function getDefaultFilter() {
-    return { searchTerm: "" }
 }

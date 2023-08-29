@@ -1,12 +1,10 @@
-import { useEffect } from "react"
-import { useForm } from "../customHooks/useForm"
-import { imageService } from "../services/image.service"
+import { useEffect, useState } from "react"
 
-export function ImageFilter({ onSetFilter }) {
-    const [filterByToEdit, setFilterByToEdit, handleChange] = useForm(imageService.getDefaultFilter(), onSetFilter.current)
+export function ImageFilter({ setFilterBy, filterBy }) {
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
     useEffect(() => {
-        onSetFilter(filterByToEdit)
+        setFilterBy(filterByToEdit)
     }, [filterByToEdit])
 
     return (
@@ -14,8 +12,8 @@ export function ImageFilter({ onSetFilter }) {
             <input type="text"
                 name="searchTerm"
                 placeholder="What are you looking for?"
-                value={filterByToEdit.txt}
-                onChange={handleChange}
+                value={filterByToEdit.searchTerm}
+                onChange={(ev) => setFilterByToEdit(ev.target.value)}
             />
         </div>
     )
