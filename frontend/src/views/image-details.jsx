@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { imageService } from "../services/image.service"
+import { ChatApp } from "../components/chat"
 
 export function ImageDetails() {
     const params = useParams()
@@ -27,15 +28,7 @@ export function ImageDetails() {
                         </div>
                         <div className="image-chat-container">
                             <img className="image" src={`/${image.name}.jpg`} />
-                            <div className="chat">
-                                <div className="chat-header">
-                                    <span>Chat</span>
-                                </div>
-                                <div className="controls-area">
-                                    <input type="text" placeholder="Type your message here" />
-                                    <button>Send</button>
-                                </div>
-                            </div>
+                            <ChatApp id={image._id} />
                         </div>
                     </>
                     : <h4>Loading...</h4>}
